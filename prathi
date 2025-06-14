@@ -1,0 +1,199 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyN5fDGrzjBbJetX2aSuO1+J",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/prathipa05092005/Digitalprotofile/blob/main/prathi\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "g7ABqXSO-HNI"
+      },
+      "outputs": [],
+      "source": [
+        "Name,Age,Marks\n",
+        "Lavanya,21,90\n",
+        "Sowmiya,20,85\n",
+        "Tharun,18,80"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import pandas as pd\n",
+        "\n",
+        "# Read the csv file\n",
+        "data=pd.read_csv(\"/content/archive (2).zip\")\n",
+        "\n",
+        "# Show first 5 rows\n",
+        "print(data.head())\n",
+        "\n",
+        "# Describe the dataset (summary stats)\n",
+        "print(data.describe())\n",
+        "\n",
+        "# Create a new 'Marks' column using the 'GPA' column\n",
+        "data[\"Marks\"]=data[\"GPA\"]\n",
+        "\n",
+        "# Access the new 'Marks' column\n",
+        "print(\"Marks column:\")\n",
+        "print(data[\"Marks\"])\n",
+        "\n",
+        "# Filter data\n",
+        "print(\"Students with marks >3:\") # Assuming a GPA > 3 is considered high marks\n",
+        "print(data[data[\"Marks\"]>3])"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "GsZFKVuI-Q1p",
+        "outputId": "8d09eada-84dc-4973-c2e5-bfb85dbb0c39"
+      },
+      "execution_count": 7,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "   StudentID  Age  Gender  Ethnicity  ParentalEducation  StudyTimeWeekly  \\\n",
+            "0       1001   17       1          0                  2        19.833723   \n",
+            "1       1002   18       0          0                  1        15.408756   \n",
+            "2       1003   15       0          2                  3         4.210570   \n",
+            "3       1004   17       1          0                  3        10.028829   \n",
+            "4       1005   17       1          0                  2         4.672495   \n",
+            "\n",
+            "   Absences  Tutoring  ParentalSupport  Extracurricular  Sports  Music  \\\n",
+            "0         7         1                2                0       0      1   \n",
+            "1         0         0                1                0       0      0   \n",
+            "2        26         0                2                0       0      0   \n",
+            "3        14         0                3                1       0      0   \n",
+            "4        17         1                3                0       0      0   \n",
+            "\n",
+            "   Volunteering       GPA  GradeClass  \n",
+            "0             0  2.929196         2.0  \n",
+            "1             0  3.042915         1.0  \n",
+            "2             0  0.112602         4.0  \n",
+            "3             0  2.054218         3.0  \n",
+            "4             0  1.288061         4.0  \n",
+            "         StudentID          Age       Gender    Ethnicity  ParentalEducation  \\\n",
+            "count  2392.000000  2392.000000  2392.000000  2392.000000        2392.000000   \n",
+            "mean   2196.500000    16.468645     0.510870     0.877508           1.746237   \n",
+            "std     690.655244     1.123798     0.499986     1.028476           1.000411   \n",
+            "min    1001.000000    15.000000     0.000000     0.000000           0.000000   \n",
+            "25%    1598.750000    15.000000     0.000000     0.000000           1.000000   \n",
+            "50%    2196.500000    16.000000     1.000000     0.000000           2.000000   \n",
+            "75%    2794.250000    17.000000     1.000000     2.000000           2.000000   \n",
+            "max    3392.000000    18.000000     1.000000     3.000000           4.000000   \n",
+            "\n",
+            "       StudyTimeWeekly     Absences     Tutoring  ParentalSupport  \\\n",
+            "count      2392.000000  2392.000000  2392.000000      2392.000000   \n",
+            "mean          9.771992    14.541388     0.301421         2.122074   \n",
+            "std           5.652774     8.467417     0.458971         1.122813   \n",
+            "min           0.001057     0.000000     0.000000         0.000000   \n",
+            "25%           5.043079     7.000000     0.000000         1.000000   \n",
+            "50%           9.705363    15.000000     0.000000         2.000000   \n",
+            "75%          14.408410    22.000000     1.000000         3.000000   \n",
+            "max          19.978094    29.000000     1.000000         4.000000   \n",
+            "\n",
+            "       Extracurricular       Sports        Music  Volunteering          GPA  \\\n",
+            "count      2392.000000  2392.000000  2392.000000   2392.000000  2392.000000   \n",
+            "mean          0.383361     0.303512     0.196906      0.157191     1.906186   \n",
+            "std           0.486307     0.459870     0.397744      0.364057     0.915156   \n",
+            "min           0.000000     0.000000     0.000000      0.000000     0.000000   \n",
+            "25%           0.000000     0.000000     0.000000      0.000000     1.174803   \n",
+            "50%           0.000000     0.000000     0.000000      0.000000     1.893393   \n",
+            "75%           1.000000     1.000000     0.000000      0.000000     2.622216   \n",
+            "max           1.000000     1.000000     1.000000      1.000000     4.000000   \n",
+            "\n",
+            "        GradeClass  \n",
+            "count  2392.000000  \n",
+            "mean      2.983696  \n",
+            "std       1.233908  \n",
+            "min       0.000000  \n",
+            "25%       2.000000  \n",
+            "50%       4.000000  \n",
+            "75%       4.000000  \n",
+            "max       4.000000  \n",
+            "Marks column:\n",
+            "0       2.929196\n",
+            "1       3.042915\n",
+            "2       0.112602\n",
+            "3       2.054218\n",
+            "4       1.288061\n",
+            "          ...   \n",
+            "2387    3.455509\n",
+            "2388    3.279150\n",
+            "2389    1.142333\n",
+            "2390    1.803297\n",
+            "2391    2.140014\n",
+            "Name: Marks, Length: 2392, dtype: float64\n",
+            "Students with marks >3:\n",
+            "      StudentID  Age  Gender  Ethnicity  ParentalEducation  StudyTimeWeekly  \\\n",
+            "1          1002   18       0          0                  1        15.408756   \n",
+            "5          1006   18       0          0                  1         8.191219   \n",
+            "9          1010   16       1          0                  1        18.444466   \n",
+            "38         1039   15       1          1                  1         2.949078   \n",
+            "44         1045   18       1          0                  1        18.921512   \n",
+            "...         ...  ...     ...        ...                ...              ...   \n",
+            "2354       3355   16       1          0                  2         1.565490   \n",
+            "2358       3359   16       0          0                  2         8.367667   \n",
+            "2368       3369   15       0          0                  4         6.682728   \n",
+            "2387       3388   18       1          0                  3        10.680555   \n",
+            "2388       3389   17       0          0                  1         7.583217   \n",
+            "\n",
+            "      Absences  Tutoring  ParentalSupport  Extracurricular  Sports  Music  \\\n",
+            "1            0         0                1                0       0      0   \n",
+            "5            0         0                1                1       0      0   \n",
+            "9            0         0                3                1       0      0   \n",
+            "38           3         1                1                1       1      0   \n",
+            "44           1         1                3                1       1      0   \n",
+            "...        ...       ...              ...              ...     ...    ...   \n",
+            "2354         4         1                4                1       1      0   \n",
+            "2358         2         0                4                1       0      0   \n",
+            "2368         3         0                2                0       0      1   \n",
+            "2387         2         0                4                1       0      0   \n",
+            "2388         4         1                4                0       1      0   \n",
+            "\n",
+            "      Volunteering       GPA  GradeClass     Marks  \n",
+            "1                0  3.042915         1.0  3.042915  \n",
+            "5                0  3.084184         1.0  3.084184  \n",
+            "9                0  3.573474         0.0  3.573474  \n",
+            "38               0  3.018906         1.0  3.018906  \n",
+            "44               0  4.000000         0.0  4.000000  \n",
+            "...            ...       ...         ...       ...  \n",
+            "2354             0  3.979421         4.0  3.979421  \n",
+            "2358             0  3.286585         1.0  3.286585  \n",
+            "2368             1  3.158592         1.0  3.158592  \n",
+            "2387             0  3.455509         0.0  3.455509  \n",
+            "2388             0  3.279150         4.0  3.279150  \n",
+            "\n",
+            "[321 rows x 16 columns]\n"
+          ]
+        }
+      ]
+    }
+  ]
+}
